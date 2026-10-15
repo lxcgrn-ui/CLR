@@ -8,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google SF / Inter Font -->
+    <!-- Google Inter Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <script>
@@ -59,7 +59,7 @@
             pointer-events: none;
         }
 
-        /* Ultra-frosted Glass Utilities applied to ALL panels */
+        /* Ultra-frosted Titanium Glass Utilities */
         .titanium-glass {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
             backdrop-filter: blur(40px);
@@ -93,6 +93,7 @@
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.18);
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+            user-select: text;
         }
 
         .titanium-glass-input:focus {
@@ -131,7 +132,7 @@
             border-radius: 10px;
         }
 
-        /* Apple Titanium Button */
+        /* Apple Titanium Buttons */
         .apple-btn {
             background: linear-gradient(135deg, #f3f4f6, #9ca3af);
             color: #08090a;
@@ -146,20 +147,26 @@
             transform: scale(0.96);
         }
 
+        .apple-btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: #d1d5db;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.25s ease;
+        }
+        .apple-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+        .apple-btn-secondary:active {
+            transform: scale(0.96);
+        }
+
         /* Modal blur */
         .modal-blur {
             backdrop-filter: blur(50px);
             -webkit-backdrop-filter: blur(50px);
             background: rgba(8, 9, 10, 0.85);
-        }
-
-        /* Mobile specific spacing */
-        .is-mobile .desktop-only {
-            display: none !important;
-        }
-
-        .is-mobile .mobile-only {
-            display: flex !important;
         }
 
         @media (max-width: 767px) {
@@ -171,10 +178,10 @@
 </head>
 <body class="relative min-h-screen flex flex-col justify-between selection:bg-gray-200 selection:text-black">
 
-    <!-- Interactive Background Canvas -->
+    <!-- Background Animation Canvas -->
     <canvas id="bg-canvas"></canvas>
 
-    <!-- Space Gray Glowing Lights -->
+    <!-- Glowing Background Light Orbs -->
     <div class="ambient-glow bg-slate-400 w-[30rem] h-[30rem] top-0 left-0"></div>
     <div class="ambient-glow bg-zinc-500 w-[36rem] h-[36rem] bottom-10 right-0" style="animation-delay: -6s;"></div>
     <div class="ambient-glow bg-gray-300 w-[26rem] h-[26rem] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="animation-delay: -3s;"></div>
@@ -191,7 +198,7 @@
                 </div>
             </div>
 
-            <!-- Language Switcher -->
+            <!-- Language Switcher Buttons -->
             <div class="flex items-center space-x-3">
                 <div class="flex items-center space-x-1 bg-black/60 p-1.5 rounded-xl border border-white/15 titanium-glass">
                     <button onclick="setLanguage('es')" id="lang-es" class="px-3 py-1.5 rounded-lg text-xs font-extrabold transition-all bg-gray-200 text-black shadow-md">ES</button>
@@ -202,7 +209,7 @@
         </div>
     </header>
 
-    <!-- Main Container -->
+    <!-- Main Content Container -->
     <main id="main-content" class="max-w-7xl mx-auto px-4 sm:px-8 py-6 z-10 w-full flex-grow space-y-8 mobile-bottom-pad">
 
         <!-- Hero Panel -->
@@ -218,17 +225,15 @@
             </p>
         </section>
 
-        <!-- Store Controls & Grid -->
+        <!-- Store Options and Filtering -->
         <section id="store" class="space-y-6">
-            <!-- Search & Filters Container -->
+            <!-- Search & Filters -->
             <div class="titanium-glass rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row gap-4 justify-between items-center">
-                <!-- Search input -->
                 <div class="relative w-full md:w-80">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
                     <input type="number" id="search-input" oninput="filterCards()" placeholder="Buscar Robux..." class="w-full titanium-glass-input rounded-xl pl-11 pr-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none transition-all">
                 </div>
 
-                <!-- Sort Filter Buttons -->
                 <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 custom-scrollbar">
                     <button onclick="setCategory('all')" id="cat-all" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-gray-200 text-black">Todos</button>
                     <button onclick="setCategory('starter')" id="cat-starter" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap titanium-glass text-gray-300 hover:text-white">Inicio (50-400)</button>
@@ -238,7 +243,7 @@
                 </div>
             </div>
 
-            <!-- Robux Options Grid -->
+            <!-- Grid of 23 Robux Options -->
             <div id="robux-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-5"></div>
         </section>
 
@@ -251,7 +256,7 @@
         </p>
     </footer>
 
-    <!-- Responsive Glass Bottom Navigation for Mobile -->
+    <!-- Mobile Glass Navigation Bar -->
     <div id="mobile-nav" class="hidden md:hidden fixed bottom-0 left-0 right-0 z-40 titanium-glass border-t border-white/20 px-6 py-3 flex justify-around items-center rounded-t-3xl backdrop-blur-3xl bg-black/85 shadow-2xl">
         <button onclick="scrollToSection('store'); playSynthSound(500);" class="flex flex-col items-center gap-1 text-gray-200">
             <i class="fa-solid fa-store text-lg"></i>
@@ -263,54 +268,91 @@
         </button>
     </div>
 
-    <!-- Glass Modal Dialog -->
+    <!-- PRIMARY MODAL: Email Entry & Package Details -->
     <div id="modal-backdrop" class="fixed inset-0 z-50 modal-blur flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
         <div id="modal-container" class="titanium-glass w-full max-w-md rounded-3xl p-6 sm:p-8 transform scale-95 transition-all duration-300 relative border border-white/25 shadow-2xl">
             <button onclick="closeModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-gray-300 hover:text-white transition-all">
                 <i class="fa-solid fa-xmark text-lg"></i>
             </button>
 
-            <div class="text-center space-y-6">
-                <div class="w-16 h-16 mx-auto rounded-2xl bg-gradient-to-tr from-gray-100 via-gray-300 to-gray-600 flex items-center justify-center shadow-lg shadow-white/10 border border-white/30">
-                    <i class="fa-solid fa-gem text-3xl text-black"></i>
+            <div class="text-center space-y-5">
+                <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-gray-100 via-gray-300 to-gray-600 flex items-center justify-center shadow-lg shadow-white/10 border border-white/30">
+                    <i class="fa-solid fa-gem text-2xl text-black"></i>
                 </div>
 
                 <div>
                     <span class="text-xs font-black text-gray-400 uppercase tracking-widest" id="modal-tag">PAQUETE SELECCIONADO</span>
-                    <h3 class="text-4xl font-black text-white mt-1" id="modal-amount">0 ROBUX</h3>
+                    <h3 class="text-3xl font-black text-white mt-0.5" id="modal-amount">0 ROBUX</h3>
                 </div>
 
-                <div class="titanium-glass rounded-2xl p-4 text-left space-y-3 text-xs text-gray-300 border border-white/10">
-                    <div class="flex justify-between">
-                        <span id="modal-label-1">Tipo de Servicio</span>
-                        <span class="font-semibold text-white" id="modal-val-1">Recarga Inmediata</span>
+                <!-- Email Input Area -->
+                <div class="space-y-2 text-left">
+                    <label id="modal-email-label" class="text-xs font-bold text-gray-300 block">Correo Electrónico (Para recibir tu código):</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                        <input type="email" id="modal-email-input" placeholder="ejemplo@correo.com" class="w-full titanium-glass-input rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none transition-all">
                     </div>
-                    <div class="flex justify-between">
-                        <span id="modal-label-2">Línea Directa</span>
-                        <span class="font-semibold text-gray-200">+58 424-3731330</span>
+                    <div class="titanium-glass rounded-xl p-3 border border-amber-500/30 bg-amber-500/10 flex items-start gap-2.5">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-400 text-sm mt-0.5"></i>
+                        <p id="modal-email-warning" class="text-[11px] text-amber-200/90 leading-tight">
+                            Asegúrate de escribir bien tu correo. Ahí es donde enviaremos el código de activación de tu Robux.
+                        </p>
                     </div>
+                    <p id="email-error-msg" class="text-xs text-red-400 hidden font-semibold text-center mt-1"></p>
                 </div>
 
-                <div class="pt-2">
-                    <button id="modal-whatsapp-btn" onclick="confirmWhatsAppRedirect()" class="w-full py-4 rounded-2xl apple-btn font-black text-sm flex items-center justify-center gap-3 shadow-xl">
-                        <i class="fa-brands fa-whatsapp text-xl"></i>
-                        <span id="modal-btn-txt">Consultar Precio en WhatsApp</span>
+                <div class="pt-2 space-y-2.5">
+                    <button id="modal-continue-btn" onclick="handleContinueWithEmail()" class="w-full py-3.5 rounded-2xl apple-btn font-black text-sm flex items-center justify-center gap-2 shadow-xl">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span id="modal-btn-txt">Continuar con Email</span>
+                    </button>
+
+                    <button id="modal-skip-btn" onclick="openConfirmModal()" class="w-full py-2.5 rounded-xl apple-btn-secondary text-xs font-bold text-gray-300 hover:text-white transition-all">
+                        <span id="modal-skip-txt">Omitir Email</span>
                     </button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Application Script -->
+    <!-- SECONDARY MODAL: Are You Sure? (Skip Email Warning) -->
+    <div id="confirm-backdrop" class="fixed inset-0 z-50 modal-blur flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div id="confirm-container" class="titanium-glass w-full max-w-sm rounded-3xl p-6 sm:p-7 transform scale-95 transition-all duration-300 relative border border-amber-500/40 shadow-2xl text-center space-y-5">
+            
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-300 shadow-lg shadow-amber-500/10">
+                <i class="fa-solid fa-circle-question text-3xl"></i>
+            </div>
+
+            <div class="space-y-2">
+                <h4 id="confirm-title" class="text-2xl font-black text-white">¿Estás seguro?</h4>
+                <p id="confirm-desc" class="text-xs text-amber-200/90 leading-relaxed titanium-glass p-3.5 rounded-xl border border-amber-500/30 bg-amber-950/20">
+                    Si omites el correo, la respuesta del comerciante podría ser más lenta para verificar tu compra.
+                </p>
+            </div>
+
+            <div class="space-y-2 pt-2">
+                <button onclick="confirmSkipAndRedirect()" class="w-full py-3 rounded-2xl apple-btn font-black text-xs flex items-center justify-center gap-2 shadow-lg">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span id="confirm-yes-btn">Sí, continuar sin email</span>
+                </button>
+
+                <button onclick="closeConfirmModal()" class="w-full py-2.5 rounded-xl apple-btn-secondary text-xs font-bold text-gray-300 hover:text-white">
+                    <span id="confirm-no-btn">Volver e ingresar correo</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Logic -->
     <script>
-        // Requested Robux Tiers
+        // Robux Tiers (23 Options)
         const robuxAmounts = [
             50, 100, 150, 200, 300, 400, 500, 600, 
             800, 1000, 1200, 1300, 1500, 1700, 2000, 
             2500, 2800, 3000, 3500, 4000, 4500, 5000, 7500
         ];
 
-        // Language Dictionary (Default Spanish ES)
+        // Multi-Language Support (Default Spanish ES)
         const translations = {
             es: {
                 heroTitle: "<span class='bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent'>ROBLOX ELITE</span>",
@@ -321,17 +363,24 @@
                 mobStore: "Tienda",
                 mobContact: "Contacto",
                 modalTag: "PAQUETE SELECCIONADO",
-                modalLabel1: "Tipo de Servicio",
-                modalVal1: "Recarga Inmediata",
-                modalLabel2: "Línea Directa",
-                modalBtn: "Consultar Precio en WhatsApp",
+                modalEmailLabel: "Correo Electrónico (Para recibir tu código):",
+                modalEmailWarning: "Por favor no te equivoques al escribir tu correo. Allí se enviará el código de tu Robux.",
+                modalBtnContinue: "Continuar con Email",
+                modalBtnSkip: "Omitir Email",
+                emailPlaceholder: "ejemplo@correo.com",
+                emailErrorInvalid: "Por favor ingresa un correo electrónico válido.",
+                confirmTitle: "¿Estás seguro?",
+                confirmDesc: "Si omites ingresar tu correo, la respuesta del comerciante podría ser más lenta para procesar y verificar tu pedido.",
+                confirmYesBtn: "Sí, continuar sin email",
+                confirmNoBtn: "Volver e ingresar correo",
                 searchPlaceholder: "Buscar Robux...",
                 catAll: "Todos",
                 catStarter: "Inicio (50-400)",
                 catPro: "Popular (500-1500)",
                 catElite: "Elite (1700-4000)",
                 catWhale: "Pro (4500+)",
-                whatsappMsg: "¡Hola! Quisiera consultar el precio exacto y detalles para comprar [AMOUNT] Robux."
+                whatsappMsgWithEmail: "¡Hola! Quisiera consultar el precio exacto y detalles para comprar [AMOUNT] Robux. Mi correo electrónico es: [EMAIL]",
+                whatsappMsgNoEmail: "¡Hola! Quisiera consultar el precio exacto y detalles para comprar [AMOUNT] Robux."
             },
             en: {
                 heroTitle: "<span class='bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent'>ROBLOX ELITE</span>",
@@ -342,17 +391,24 @@
                 mobStore: "Store",
                 mobContact: "Support",
                 modalTag: "SELECTED PACKAGE",
-                modalLabel1: "Service Type",
-                modalVal1: "Instant Top-Up",
-                modalLabel2: "Direct Line",
-                modalBtn: "Ask Exact Price on WhatsApp",
+                modalEmailLabel: "Email Address (To receive your code):",
+                modalEmailWarning: "Please double check your email address. Your Robux activation code will be delivered there.",
+                modalBtnContinue: "Continue with Email",
+                modalBtnSkip: "Skip Email",
+                emailPlaceholder: "example@mail.com",
+                emailErrorInvalid: "Please enter a valid email address.",
+                confirmTitle: "Are you sure?",
+                confirmDesc: "If you skip entering your email, the seller's response might be slower to verify your transaction.",
+                confirmYesBtn: "Yes, proceed without email",
+                confirmNoBtn: "Go back and enter email",
                 searchPlaceholder: "Search Robux...",
                 catAll: "All",
                 catStarter: "Starter (50-400)",
                 catPro: "Popular (500-1500)",
                 catElite: "Elite (1700-4000)",
                 catWhale: "Whale (4500+)",
-                whatsappMsg: "Hello! I would like to inquire about the exact price and details for [AMOUNT] Robux."
+                whatsappMsgWithEmail: "Hello! I would like to inquire about the exact price and details for [AMOUNT] Robux. My email is: [EMAIL]",
+                whatsappMsgNoEmail: "Hello! I would like to inquire about the exact price and details for [AMOUNT] Robux."
             },
             zh: {
                 heroTitle: "<span class='bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent'>ROBLOX ELITE</span>",
@@ -363,17 +419,24 @@
                 mobStore: "商店",
                 mobContact: "客服",
                 modalTag: "已選擇方案",
-                modalLabel1: "服務類型",
-                modalVal1: "即時官方充值",
-                modalLabel2: "專屬通道",
-                modalBtn: "前往 WhatsApp 詢問確切金額",
+                modalEmailLabel: "電子郵件（用於接收序號）：",
+                modalEmailWarning: "請務必確認電子郵件輸入正確，序號將直接傳送到此信箱。",
+                modalBtnContinue: "使用電子郵件繼續",
+                modalBtnSkip: "跳過電子郵件",
+                emailPlaceholder: "example@email.com",
+                emailErrorInvalid: "請輸入有效的電子郵件地址。",
+                confirmTitle: "確定嗎？",
+                confirmDesc: "如果您不輸入電子郵件，商家的回覆與核對速度可能會較慢。",
+                confirmYesBtn: "確定，不使用電子郵件繼續",
+                confirmNoBtn: "返回並輸入電子郵件",
                 searchPlaceholder: "搜尋 Robux...",
                 catAll: "全部",
                 catStarter: "入門 (50-400)",
                 catPro: "熱門 (500-1500)",
                 catElite: "精英 (1700-4000)",
                 catWhale: "尊榮 (4500+)",
-                whatsappMsg: "你好！我想詢問購買 [AMOUNT] Robux 的確切金額與詳細流程。"
+                whatsappMsgWithEmail: "你好！我想詢問購買 [AMOUNT] Robux 的確切金額與詳細流程。我的電子郵件是：[EMAIL]",
+                whatsappMsgNoEmail: "你好！我想詢問購買 [AMOUNT] Robux 的確切金額與詳細流程。"
             }
         };
 
@@ -382,7 +445,7 @@
         let selectedRobuxAmount = 0;
         let audioCtx = null;
 
-        // Interactive Web Audio Sound Synthesizer
+        // Interactive Audio Synthesizer
         function playSynthSound(freq = 520) {
             try {
                 if (!audioCtx) {
@@ -404,7 +467,7 @@
             } catch (e) {}
         }
 
-        // Particle Canvas Animation Background
+        // Background Particles Canvas
         function initParticles() {
             const canvas = document.getElementById('bg-canvas');
             const ctx = canvas.getContext('2d');
@@ -451,7 +514,7 @@
             animate();
         }
 
-        // Mobile Device Detection & Dynamic UI Switching
+        // Mobile Device Auto Detection
         function checkMobileDevice() {
             const isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
             const mobileNav = document.getElementById('mobile-nav');
@@ -466,7 +529,7 @@
             }
         }
 
-        // Language Switcher Functionality
+        // Language Switcher
         function setLanguage(lang) {
             currentLang = lang;
             ['es', 'en', 'zh'].forEach(l => {
@@ -493,16 +556,21 @@
             document.getElementById('cat-whale').innerText = t.catWhale;
 
             document.getElementById('modal-tag').innerText = t.modalTag;
-            document.getElementById('modal-label-1').innerText = t.modalLabel1;
-            document.getElementById('modal-val-1').innerText = t.modalVal1;
-            document.getElementById('modal-label-2').innerText = t.modalLabel2;
-            document.getElementById('modal-btn-txt').innerText = t.modalBtn;
+            document.getElementById('modal-email-label').innerText = t.modalEmailLabel;
+            document.getElementById('modal-email-warning').innerText = t.modalEmailWarning;
+            document.getElementById('modal-email-input').placeholder = t.emailPlaceholder;
+            document.getElementById('modal-btn-txt').innerText = t.modalBtnContinue;
+            document.getElementById('modal-skip-txt').innerText = t.modalBtnSkip;
+
+            document.getElementById('confirm-title').innerText = t.confirmTitle;
+            document.getElementById('confirm-desc').innerText = t.confirmDesc;
+            document.getElementById('confirm-yes-btn').innerText = t.confirmYesBtn;
+            document.getElementById('confirm-no-btn').innerText = t.confirmNoBtn;
 
             renderCards();
             playSynthSound(620);
         }
 
-        // Category Filter
         function setCategory(cat) {
             currentCategory = cat;
             document.querySelectorAll('.cat-btn').forEach(btn => {
@@ -517,7 +585,7 @@
             renderCards();
         }
 
-        // Render Robux Cards Grid
+        // Render Card Grid
         function renderCards() {
             const grid = document.getElementById('robux-grid');
             const searchVal = parseInt(document.getElementById('search-input').value, 10);
@@ -559,10 +627,13 @@
             });
         }
 
-        // Modal Open / Close
+        // Main Modal Mechanics
         function openModal(amount) {
             selectedRobuxAmount = amount;
             document.getElementById('modal-amount').innerText = `${amount.toLocaleString()} ROBUX`;
+            document.getElementById('modal-email-input').value = '';
+            document.getElementById('email-error-msg').classList.add('hidden');
+
             const backdrop = document.getElementById('modal-backdrop');
             const container = document.getElementById('modal-container');
 
@@ -582,12 +653,72 @@
             playSynthSound(380);
         }
 
-        // Direct WhatsApp Inquiry Action
-        function confirmWhatsAppRedirect() {
-            const msgTemplate = translations[currentLang].whatsappMsg;
-            const message = msgTemplate.replace('[AMOUNT]', selectedRobuxAmount);
+        // Secondary Confirmation Modal Mechanics
+        function openConfirmModal() {
+            const emailInput = document.getElementById('modal-email-input').value.trim();
+            // If email is already typed, ask if they want to skip it anyway
+            const confirmBackdrop = document.getElementById('confirm-backdrop');
+            const confirmContainer = document.getElementById('confirm-container');
+
+            confirmBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+            confirmContainer.classList.remove('scale-95');
+            confirmContainer.classList.add('scale-100');
+            playSynthSound(600);
+        }
+
+        function closeConfirmModal() {
+            const confirmBackdrop = document.getElementById('confirm-backdrop');
+            const confirmContainer = document.getElementById('confirm-container');
+
+            confirmBackdrop.classList.add('opacity-0', 'pointer-events-none');
+            confirmContainer.classList.remove('scale-100');
+            confirmContainer.classList.add('scale-95');
+            playSynthSound(380);
+        }
+
+        // Email Validation & Proceed Logic
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function handleContinueWithEmail() {
+            const email = document.getElementById('modal-email-input').value.trim();
+            const errorMsg = document.getElementById('email-error-msg');
+
+            if (!email) {
+                // If left empty and user clicks primary button, prompt confirm dialog
+                openConfirmModal();
+                return;
+            }
+
+            if (!validateEmail(email)) {
+                errorMsg.innerText = translations[currentLang].emailErrorInvalid;
+                errorMsg.classList.remove('hidden');
+                playSynthSound(280);
+                return;
+            }
+
+            errorMsg.classList.add('hidden');
+            sendWhatsAppRedirect(email);
+        }
+
+        function confirmSkipAndRedirect() {
+            closeConfirmModal();
+            sendWhatsAppRedirect(null);
+        }
+
+        // Direct WhatsApp Link Generator
+        function sendWhatsAppRedirect(email) {
+            const t = translations[currentLang];
+            let message = "";
+
+            if (email) {
+                message = t.whatsappMsgWithEmail.replace('[AMOUNT]', selectedRobuxAmount).replace('[EMAIL]', email);
+            } else {
+                message = t.whatsappMsgNoEmail.replace('[AMOUNT]', selectedRobuxAmount);
+            }
+
             const encoded = encodeURIComponent(message);
-            
             const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
             const phone = "584243731330";
             
@@ -597,6 +728,7 @@
             }
 
             playSynthSound(880);
+            closeModal();
             window.open(url, '_blank');
         }
 
@@ -605,13 +737,12 @@
             if (el) el.scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Window Event Handlers
         window.addEventListener('resize', checkMobileDevice);
 
         window.onload = function() {
             initParticles();
             checkMobileDevice();
-            setLanguage('es'); // Default Spanish ES
+            setLanguage('es');
         };
     </script>
 </body>
