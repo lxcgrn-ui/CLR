@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ROBLOX ELITE - Glass Titanium Portal</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Inter Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <script>
@@ -48,7 +45,6 @@
             min-height: 100vh;
         }
 
-        /* Canvas Background */
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -59,7 +55,6 @@
             pointer-events: none;
         }
 
-        /* Ultra-frosted Titanium Glass Utilities */
         .titanium-glass {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
             backdrop-filter: blur(40px);
@@ -101,7 +96,6 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.6);
         }
 
-        /* Ambient glowing background orbs */
         .ambient-glow {
             position: fixed;
             border-radius: 50%;
@@ -118,7 +112,6 @@
             100% { transform: scale(0.9) translate(-30px, 40px); opacity: 0.15; }
         }
 
-        /* Scrollbars */
         .custom-scrollbar::-webkit-scrollbar {
             width: 5px;
             height: 5px;
@@ -132,7 +125,6 @@
             border-radius: 10px;
         }
 
-        /* Apple Titanium Buttons */
         .apple-btn {
             background: linear-gradient(135deg, #f3f4f6, #9ca3af);
             color: #08090a;
@@ -162,7 +154,6 @@
             transform: scale(0.96);
         }
 
-        /* Modal blur */
         .modal-blur {
             backdrop-filter: blur(50px);
             -webkit-backdrop-filter: blur(50px);
@@ -178,15 +169,12 @@
 </head>
 <body class="relative min-h-screen flex flex-col justify-between selection:bg-gray-200 selection:text-black">
 
-    <!-- Background Animation Canvas -->
     <canvas id="bg-canvas"></canvas>
 
-    <!-- Glowing Background Light Orbs -->
     <div class="ambient-glow bg-slate-400 w-[30rem] h-[30rem] top-0 left-0"></div>
     <div class="ambient-glow bg-zinc-500 w-[36rem] h-[36rem] bottom-10 right-0" style="animation-delay: -6s;"></div>
     <div class="ambient-glow bg-gray-300 w-[26rem] h-[26rem] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="animation-delay: -3s;"></div>
 
-    <!-- Header Navigation -->
     <header class="w-full px-4 sm:px-8 py-4 z-20 sticky top-0">
         <div class="max-w-7xl mx-auto flex justify-between items-center titanium-glass rounded-2xl px-5 py-3.5">
             <div class="flex items-center space-x-3.5 cursor-pointer" onclick="playSynthSound(587.33)">
@@ -198,7 +186,6 @@
                 </div>
             </div>
 
-            <!-- Language Switcher Buttons -->
             <div class="flex items-center space-x-3">
                 <div class="flex items-center space-x-1 bg-black/60 p-1.5 rounded-xl border border-white/15 titanium-glass">
                     <button onclick="setLanguage('es')" id="lang-es" class="px-3 py-1.5 rounded-lg text-xs font-extrabold transition-all bg-gray-200 text-black shadow-md">ES</button>
@@ -209,10 +196,8 @@
         </div>
     </header>
 
-    <!-- Main Content Container -->
     <main id="main-content" class="max-w-7xl mx-auto px-4 sm:px-8 py-6 z-10 w-full flex-grow space-y-8 mobile-bottom-pad">
 
-        <!-- Hero Panel -->
         <section class="titanium-glass rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden">
             <div class="absolute -top-24 -left-24 w-60 h-60 bg-gray-300/10 rounded-full blur-3xl"></div>
 
@@ -225,9 +210,7 @@
             </p>
         </section>
 
-        <!-- Store Options and Filtering -->
         <section id="store" class="space-y-6">
-            <!-- Search & Filters -->
             <div class="titanium-glass rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row gap-4 justify-between items-center">
                 <div class="relative w-full md:w-80">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
@@ -236,27 +219,23 @@
 
                 <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 custom-scrollbar">
                     <button onclick="setCategory('all')" id="cat-all" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-gray-200 text-black">Todos</button>
-                    <button onclick="setCategory('starter')" id="cat-starter" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap titanium-glass text-gray-300 hover:text-white">Inicio (50-400)</button>
-                    <button onclick="setCategory('pro')" id="cat-pro" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap titanium-glass text-gray-300 hover:text-white">Popular (500-1500)</button>
-                    <button onclick="setCategory('elite')" id="cat-elite" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap titanium-glass text-gray-300 hover:text-white">Elite (1700-4000)</button>
-                    <button onclick="setCategory('whale')" id="cat-whale" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap titanium-glass text-gray-300 hover:text-white">Pro (4500+)</button>
+                    <button onclick="setCategory('starter')" id="cat-starter" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap titanium-glass text-gray-300 hover:text-white">Inicio (50-1000)</button>
+                    <button onclick="setCategory('pro')" id="cat-pro" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap titanium-glass text-gray-300 hover:text-white">Popular (1500-3000)</button>
+                    <button onclick="setCategory('elite')" id="cat-elite" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap titanium-glass text-gray-300 hover:text-white">Elite (3500+)</button>
                 </div>
             </div>
 
-            <!-- Grid of 23 Robux Options -->
             <div id="robux-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-5"></div>
         </section>
 
     </main>
 
-    <!-- Footer -->
     <footer class="w-full py-6 px-4 text-center z-10 border-t border-white/10 titanium-glass bg-black/70 mt-12">
         <p class="text-xs text-gray-400 tracking-wider" id="footer-text">
             &copy; 2026 ROBLOX ELITE. Todos los derechos reservados. No afiliado a Roblox Corporation.
         </p>
     </footer>
 
-    <!-- Mobile Glass Navigation Bar -->
     <div id="mobile-nav" class="hidden md:hidden fixed bottom-0 left-0 right-0 z-40 titanium-glass border-t border-white/20 px-6 py-3 flex justify-around items-center rounded-t-3xl backdrop-blur-3xl bg-black/85 shadow-2xl">
         <button onclick="scrollToSection('store'); playSynthSound(500);" class="flex flex-col items-center gap-1 text-gray-200">
             <i class="fa-solid fa-store text-lg"></i>
@@ -268,7 +247,6 @@
         </button>
     </div>
 
-    <!-- PRIMARY MODAL: Email Entry & Package Details -->
     <div id="modal-backdrop" class="fixed inset-0 z-50 modal-blur flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
         <div id="modal-container" class="titanium-glass w-full max-w-md rounded-3xl p-6 sm:p-8 transform scale-95 transition-all duration-300 relative border border-white/25 shadow-2xl">
             <button onclick="closeModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-gray-300 hover:text-white transition-all">
@@ -285,7 +263,6 @@
                     <h3 class="text-3xl font-black text-white mt-0.5" id="modal-amount">0 ROBUX</h3>
                 </div>
 
-                <!-- Email Input Area -->
                 <div class="space-y-2 text-left">
                     <label id="modal-email-label" class="text-xs font-bold text-gray-300 block">Correo Electrónico (Para recibir tu código):</label>
                     <div class="relative">
@@ -315,7 +292,6 @@
         </div>
     </div>
 
-    <!-- SECONDARY MODAL: Are You Sure? (Skip Email Warning) -->
     <div id="confirm-backdrop" class="fixed inset-0 z-50 modal-blur flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
         <div id="confirm-container" class="titanium-glass w-full max-w-sm rounded-3xl p-6 sm:p-7 transform scale-95 transition-all duration-300 relative border border-amber-500/40 shadow-2xl text-center space-y-5">
             
@@ -343,16 +319,12 @@
         </div>
     </div>
 
-    <!-- Application Logic -->
     <script>
-        // Robux Tiers (23 Options)
         const robuxAmounts = [
-            50, 100, 150, 200, 300, 400, 500, 600, 
-            800, 1000, 1200, 1300, 1500, 1700, 2000, 
-            2500, 2800, 3000, 3500, 4000, 4500, 5000, 7500
+            50, 500, 1000, 1500, 2000, 2500, 
+            3000, 3500, 4000, 4500, 5000, 7500
         ];
 
-        // Multi-Language Support (Default Spanish ES)
         const translations = {
             es: {
                 heroTitle: "<span class='bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent'>ROBLOX ELITE</span>",
@@ -375,12 +347,11 @@
                 confirmNoBtn: "Volver e ingresar correo",
                 searchPlaceholder: "Buscar Robux...",
                 catAll: "Todos",
-                catStarter: "Inicio (50-400)",
-                catPro: "Popular (500-1500)",
-                catElite: "Elite (1700-4000)",
-                catWhale: "Pro (4500+)",
+                catStarter: "Inicio (50-1000)",
+                catPro: "Popular (1500-3000)",
+                catElite: "Elite (3500+)",
                 whatsappMsgWithEmail: "¡Hola! Quisiera consultar el precio exacto y detalles para comprar [AMOUNT] Robux. Mi correo electrónico es: [EMAIL]",
-                whatsappMsgNoEmail: "¡Hola! Quisiera consultar el precio exacto y detalles para comprar [AMOUNT] Robux."
+                whatsappMsgNoEmail: "¡Hola! Quisiera consultar el precio exacto y detalles para comprar [AMOUNT] Robux. (No ingresé correo electrónico)"
             },
             en: {
                 heroTitle: "<span class='bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent'>ROBLOX ELITE</span>",
@@ -403,12 +374,11 @@
                 confirmNoBtn: "Go back and enter email",
                 searchPlaceholder: "Search Robux...",
                 catAll: "All",
-                catStarter: "Starter (50-400)",
-                catPro: "Popular (500-1500)",
-                catElite: "Elite (1700-4000)",
-                catWhale: "Whale (4500+)",
+                catStarter: "Starter (50-1000)",
+                catPro: "Popular (1500-3000)",
+                catElite: "Elite (3500+)",
                 whatsappMsgWithEmail: "Hello! I would like to inquire about the exact price and details for [AMOUNT] Robux. My email is: [EMAIL]",
-                whatsappMsgNoEmail: "Hello! I would like to inquire about the exact price and details for [AMOUNT] Robux."
+                whatsappMsgNoEmail: "Hello! I would like to inquire about the exact price and details for [AMOUNT] Robux. (No email provided)"
             },
             zh: {
                 heroTitle: "<span class='bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent'>ROBLOX ELITE</span>",
@@ -431,12 +401,11 @@
                 confirmNoBtn: "返回並輸入電子郵件",
                 searchPlaceholder: "搜尋 Robux...",
                 catAll: "全部",
-                catStarter: "入門 (50-400)",
-                catPro: "熱門 (500-1500)",
-                catElite: "精英 (1700-4000)",
-                catWhale: "尊榮 (4500+)",
+                catStarter: "入門 (50-1000)",
+                catPro: "熱門 (1500-3000)",
+                catElite: "尊榮 (3500+)",
                 whatsappMsgWithEmail: "你好！我想詢問購買 [AMOUNT] Robux 的確切金額與詳細流程。我的電子郵件是：[EMAIL]",
-                whatsappMsgNoEmail: "你好！我想詢問購買 [AMOUNT] Robux 的確切金額與詳細流程。"
+                whatsappMsgNoEmail: "你好！我想詢問購買 [AMOUNT] Robux 的確切金額與詳細流程。（未提供電子郵件）"
             }
         };
 
@@ -445,7 +414,6 @@
         let selectedRobuxAmount = 0;
         let audioCtx = null;
 
-        // Interactive Audio Synthesizer
         function playSynthSound(freq = 520) {
             try {
                 if (!audioCtx) {
@@ -467,7 +435,6 @@
             } catch (e) {}
         }
 
-        // Background Particles Canvas
         function initParticles() {
             const canvas = document.getElementById('bg-canvas');
             const ctx = canvas.getContext('2d');
@@ -514,7 +481,6 @@
             animate();
         }
 
-        // Mobile Device Auto Detection
         function checkMobileDevice() {
             const isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
             const mobileNav = document.getElementById('mobile-nav');
@@ -529,7 +495,6 @@
             }
         }
 
-        // Language Switcher
         function setLanguage(lang) {
             currentLang = lang;
             ['es', 'en', 'zh'].forEach(l => {
@@ -553,7 +518,6 @@
             document.getElementById('cat-starter').innerText = t.catStarter;
             document.getElementById('cat-pro').innerText = t.catPro;
             document.getElementById('cat-elite').innerText = t.catElite;
-            document.getElementById('cat-whale').innerText = t.catWhale;
 
             document.getElementById('modal-tag').innerText = t.modalTag;
             document.getElementById('modal-email-label').innerText = t.modalEmailLabel;
@@ -585,7 +549,6 @@
             renderCards();
         }
 
-        // Render Card Grid
         function renderCards() {
             const grid = document.getElementById('robux-grid');
             const searchVal = parseInt(document.getElementById('search-input').value, 10);
@@ -595,10 +558,9 @@
                 if (!isNaN(searchVal) && !amount.toString().includes(searchVal.toString())) {
                     return false;
                 }
-                if (currentCategory === 'starter') return amount >= 50 && amount <= 400;
-                if (currentCategory === 'pro') return amount >= 500 && amount <= 1500;
-                if (currentCategory === 'elite') return amount >= 1700 && amount <= 4000;
-                if (currentCategory === 'whale') return amount >= 4500;
+                if (currentCategory === 'starter') return amount >= 50 && amount <= 1000;
+                if (currentCategory === 'pro') return amount >= 1500 && amount <= 3000;
+                if (currentCategory === 'elite') return amount >= 3500;
                 return true;
             });
 
@@ -627,7 +589,6 @@
             });
         }
 
-        // Main Modal Mechanics
         function openModal(amount) {
             selectedRobuxAmount = amount;
             document.getElementById('modal-amount').innerText = `${amount.toLocaleString()} ROBUX`;
@@ -653,10 +614,7 @@
             playSynthSound(380);
         }
 
-        // Secondary Confirmation Modal Mechanics
         function openConfirmModal() {
-            const emailInput = document.getElementById('modal-email-input').value.trim();
-            // If email is already typed, ask if they want to skip it anyway
             const confirmBackdrop = document.getElementById('confirm-backdrop');
             const confirmContainer = document.getElementById('confirm-container');
 
@@ -676,7 +634,6 @@
             playSynthSound(380);
         }
 
-        // Email Validation & Proceed Logic
         function validateEmail(email) {
             return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
         }
@@ -686,7 +643,6 @@
             const errorMsg = document.getElementById('email-error-msg');
 
             if (!email) {
-                // If left empty and user clicks primary button, prompt confirm dialog
                 openConfirmModal();
                 return;
             }
@@ -707,7 +663,6 @@
             sendWhatsAppRedirect(null);
         }
 
-        // Direct WhatsApp Link Generator
         function sendWhatsAppRedirect(email) {
             const t = translations[currentLang];
             let message = "";
