@@ -1,35 +1,704 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Roblox Elite - Robux Store</title>
-    <meta name="description" content="Choose your Robux package and get exact pricing via WhatsApp.">
-    <meta name="author" content="Lovable" />
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ROBLOX ELITE - Glass Titanium Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                    },
+                    colors: {
+                        titaniumBg: '#08090a',
+                        titaniumDark: '#121418',
+                        titaniumCard: 'rgba(255, 255, 255, 0.04)',
+                        titaniumBorder: 'rgba(255, 255, 255, 0.15)',
+                        titaniumSilver: '#e5e7eb',
+                        titaniumGray: '#9ca3af',
+                        titaniumAccent: '#f3f4f6'
+                    }
+                }
+            }
+        }
+    </script>
 
-    <!-- Resource Hints for Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <style>
+        * {
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            box-sizing: border-box;
+        }
 
-    <!-- Preload Critical Hero Images -->
-    <link rel="preload" as="image" href="/images/homepage/credit-card.webp" fetchpriority="high" />
-    <link rel="preload" as="image" href="/images/homepage/hero-stat.webp" fetchpriority="high" />
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #08090a;
+            color: #f3f4f6;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
 
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Roblox Elite - Robux Store">
-    <meta property="og:description" content="Choose your Robux package and get exact pricing via WhatsApp.">
-    <meta property="og:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/0qmS0zMEwRhO1aGo5O7ABtpptqV2/template-screenshots/9f7ffd26-c6ee-4f37-ad29-c6b6cad82c31/home-desktop.webp">
-    <meta property="og:site_name" content="Lovable">
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Roblox Elite - Robux Store">
-    <meta name="twitter:description" content="Choose your Robux package and get exact pricing via WhatsApp.">
-    <meta name="twitter:image" content="https://storage.googleapis.com/gpt-engineer-file-uploads/0qmS0zMEwRhO1aGo5O7ABtpptqV2/template-screenshots/9f7ffd26-c6ee-4f37-ad29-c6b6cad82c31/home-desktop.webp">
-  </head>
+        .titanium-glass {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+        }
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+        .titanium-glass-card {
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.06), rgba(15, 17, 22, 0.8));
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .titanium-glass-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 20px 45px rgba(255, 255, 255, 0.12), inset 0 1px 2px rgba(255, 255, 255, 0.4);
+        }
+
+        .titanium-glass-card:active {
+            transform: scale(0.96);
+        }
+
+        .titanium-glass-input {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+            user-select: text;
+        }
+
+        .titanium-glass-input:focus {
+            border-color: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2), inset 0 2px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .ambient-glow {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(150px);
+            z-index: 0;
+            opacity: 0.22;
+            pointer-events: none;
+            animation: pulseGlow 12s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1) translate(0, 0); opacity: 0.18; }
+            50% { transform: scale(1.25) translate(40px, -30px); opacity: 0.28; }
+            100% { transform: scale(0.9) translate(-30px, 40px); opacity: 0.15; }
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+        }
+
+        .apple-btn {
+            background: linear-gradient(135deg, #f3f4f6, #9ca3af);
+            color: #08090a;
+            box-shadow: 0 10px 30px rgba(243, 244, 246, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+            transition: all 0.25s ease;
+        }
+        .apple-btn:hover {
+            box-shadow: 0 14px 40px rgba(255, 255, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 1);
+            transform: translateY(-2px);
+        }
+        .apple-btn:active {
+            transform: scale(0.96);
+        }
+
+        .apple-btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            color: #d1d5db;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.25s ease;
+        }
+        .apple-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            border-color: rgba(255, 255, 255, 0.35);
+        }
+        .apple-btn-secondary:active {
+            transform: scale(0.96);
+        }
+
+        .modal-blur {
+            backdrop-filter: blur(50px);
+            -webkit-backdrop-filter: blur(50px);
+            background: rgba(8, 9, 10, 0.85);
+        }
+
+        @media (max-width: 767px) {
+            .mobile-bottom-pad {
+                padding-bottom: 100px;
+            }
+        }
+    </style>
+</head>
+<body class="relative min-h-screen flex flex-col justify-between selection:bg-gray-200 selection:text-black">
+
+    <canvas id="bg-canvas"></canvas>
+
+    <div class="ambient-glow bg-slate-400 w-[30rem] h-[30rem] top-0 left-0"></div>
+    <div class="ambient-glow bg-zinc-500 w-[36rem] h-[36rem] bottom-10 right-0" style="animation-delay: -6s;"></div>
+    <div class="ambient-glow bg-gray-300 w-[26rem] h-[26rem] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2" style="animation-delay: -3s;"></div>
+
+    <header class="w-full px-4 sm:px-8 py-4 z-20 sticky top-0">
+        <div class="max-w-7xl mx-auto flex justify-between items-center titanium-glass rounded-2xl px-5 py-3.5">
+            <div class="flex items-center space-x-3.5 cursor-pointer" onclick="playSynthSound(587.33)">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-gray-100 via-gray-400 to-gray-700 flex items-center justify-center shadow-lg shadow-white/10 border border-white/30">
+                    <i class="fa-solid fa-cube text-black text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="font-black tracking-widest text-lg sm:text-2xl bg-gradient-to-r from-white via-gray-200 to-gray-400 bg-clip-text text-transparent">ROBLOX ELITE</h1>
+                </div>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                <div class="flex items-center space-x-1 bg-black/60 p-1.5 rounded-xl border border-white/15 titanium-glass">
+                    <button onclick="setLanguage('es')" id="lang-es" class="px-3 py-1.5 rounded-lg text-xs font-extrabold transition-all bg-gray-200 text-black shadow-md">ES</button>
+                    <button onclick="setLanguage('en')" id="lang-en" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all text-gray-400 hover:text-white">EN</button>
+                    <button onclick="setLanguage('zh')" id="lang-zh" class="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all text-gray-400 hover:text-white">繁體</button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content" class="max-w-7xl mx-auto px-4 sm:px-8 py-6 z-10 w-full flex-grow space-y-8 mobile-bottom-pad">
+
+        <section class="titanium-glass rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden">
+            <div class="absolute -top-24 -left-24 w-60 h-60 bg-gray-300/10 rounded-full blur-3xl"></div>
+
+            <h2 id="main-hero-title" class="text-3xl sm:text-5xl md:text-6xl font-black tracking-tight mb-4 text-white">
+                <span class="bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent">ROBLOX ELITE</span>
+            </h2>
+
+            <p id="main-hero-desc" class="max-w-2xl mx-auto text-gray-400 text-sm sm:text-base leading-relaxed">
+                Selecciona la cantidad de Robux deseada y conéctate directamente vía WhatsApp para consultar el precio exacto y detalles.
+            </p>
+        </section>
+
+        <section id="store" class="space-y-6">
+            <div class="titanium-glass rounded-2xl p-4 sm:p-5 flex flex-col md:flex-row gap-4 justify-between items-center">
+                <div class="relative w-full md:w-80">
+                    <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                    <input type="number" id="search-input" oninput="filterCards()" placeholder="Buscar Robux..." class="w-full titanium-glass-input rounded-xl pl-11 pr-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none transition-all">
+                </div>
+
+                <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 custom-scrollbar">
+                    <button onclick="setCategory('all')" id="cat-all" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-gray-200 text-black">Todos</button>
+                    <button onclick="setCategory('starter')" id="cat-starter" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap titanium-glass text-gray-300 hover:text-white">Inicio (50-1000)</button>
+                    <button onclick="setCategory('pro')" id="cat-pro" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap titanium-glass text-gray-300 hover:text-white">Popular (1500-3000)</button>
+                    <button onclick="setCategory('elite')" id="cat-elite" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap titanium-glass text-gray-300 hover:text-white">Elite (3500+)</button>
+                </div>
+            </div>
+
+            <div id="robux-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 sm:gap-5"></div>
+        </section>
+
+    </main>
+
+    <footer class="w-full py-6 px-4 text-center z-10 border-t border-white/10 titanium-glass bg-black/70 mt-12">
+        <p class="text-xs text-gray-400 tracking-wider" id="footer-text">
+            &copy; 2026 ROBLOX ELITE. Todos los derechos reservados. No afiliado a Roblox Corporation.
+        </p>
+    </footer>
+
+    <div id="mobile-nav" class="hidden md:hidden fixed bottom-0 left-0 right-0 z-40 titanium-glass border-t border-white/20 px-6 py-3 flex justify-around items-center rounded-t-3xl backdrop-blur-3xl bg-black/85 shadow-2xl">
+        <button onclick="scrollToSection('store'); playSynthSound(500);" class="flex flex-col items-center gap-1 text-gray-200">
+            <i class="fa-solid fa-store text-lg"></i>
+            <span class="text-[10px] font-bold" id="mob-nav-store">Tienda</span>
+        </button>
+        <button onclick="openModal(1000); playSynthSound(700);" class="flex flex-col items-center gap-1 text-gray-400 hover:text-white">
+            <i class="fa-brands fa-whatsapp text-lg"></i>
+            <span class="text-[10px] font-bold" id="mob-nav-contact">Contacto</span>
+        </button>
+    </div>
+
+    <div id="modal-backdrop" class="fixed inset-0 z-50 modal-blur flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div id="modal-container" class="titanium-glass w-full max-w-md rounded-3xl p-6 sm:p-8 transform scale-95 transition-all duration-300 relative border border-white/25 shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center text-gray-300 hover:text-white transition-all">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="text-center space-y-5">
+                <div class="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-gray-100 via-gray-300 to-gray-600 flex items-center justify-center shadow-lg shadow-white/10 border border-white/30">
+                    <i class="fa-solid fa-gem text-2xl text-black"></i>
+                </div>
+
+                <div>
+                    <span class="text-xs font-black text-gray-400 uppercase tracking-widest" id="modal-tag">PAQUETE SELECCIONADO</span>
+                    <h3 class="text-3xl font-black text-white mt-0.5" id="modal-amount">0 ROBUX</h3>
+                </div>
+
+                <div class="space-y-2 text-left">
+                    <label id="modal-email-label" class="text-xs font-bold text-gray-300 block">Correo Electrónico (Para recibir tu código):</label>
+                    <div class="relative">
+                        <i class="fa-solid fa-envelope absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm"></i>
+                        <input type="email" id="modal-email-input" placeholder="ejemplo@correo.com" class="w-full titanium-glass-input rounded-xl pl-11 pr-4 py-3 text-sm text-white placeholder-gray-500 focus:outline-none transition-all">
+                    </div>
+                    <div class="titanium-glass rounded-xl p-3 border border-amber-500/30 bg-amber-500/10 flex items-start gap-2.5">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-400 text-sm mt-0.5"></i>
+                        <p id="modal-email-warning" class="text-[11px] text-amber-200/90 leading-tight">
+                            Asegúrate de escribir bien tu correo. Ahí es donde enviaremos el código de activación de tu Robux.
+                        </p>
+                    </div>
+                    <p id="email-error-msg" class="text-xs text-red-400 hidden font-semibold text-center mt-1"></p>
+                </div>
+
+                <div class="pt-2 space-y-2.5">
+                    <button id="modal-continue-btn" onclick="handleContinueWithEmail()" class="w-full py-3.5 rounded-2xl apple-btn font-black text-sm flex items-center justify-center gap-2 shadow-xl">
+                        <i class="fa-brands fa-whatsapp text-lg"></i>
+                        <span id="modal-btn-txt">Continuar con Email</span>
+                    </button>
+
+                    <button id="modal-skip-btn" onclick="openConfirmModal()" class="w-full py-2.5 rounded-xl apple-btn-secondary text-xs font-bold text-gray-300 hover:text-white transition-all">
+                        <span id="modal-skip-txt">Omitir Email</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirm-backdrop" class="fixed inset-0 z-50 modal-blur flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300">
+        <div id="confirm-container" class="titanium-glass w-full max-w-sm rounded-3xl p-6 sm:p-7 transform scale-95 transition-all duration-300 relative border border-amber-500/40 shadow-2xl text-center space-y-5">
+            
+            <div class="w-14 h-14 mx-auto rounded-2xl bg-amber-500/20 border border-amber-400/40 flex items-center justify-center text-amber-300 shadow-lg shadow-amber-500/10">
+                <i class="fa-solid fa-circle-question text-3xl"></i>
+            </div>
+
+            <div class="space-y-2">
+                <h4 id="confirm-title" class="text-2xl font-black text-white">¿Estás seguro?</h4>
+                <p id="confirm-desc" class="text-xs text-amber-200/90 leading-relaxed titanium-glass p-3.5 rounded-xl border border-amber-500/30 bg-amber-950/20">
+                    Si omites el correo, la respuesta del comerciante podría ser más lenta para verificar tu compra.
+                </p>
+            </div>
+
+            <div class="space-y-2 pt-2">
+                <button onclick="confirmSkipAndRedirect()" class="w-full py-3 rounded-2xl apple-btn font-black text-xs flex items-center justify-center gap-2 shadow-lg">
+                    <i class="fa-brands fa-whatsapp text-base"></i>
+                    <span id="confirm-yes-btn">Sí, continuar sin email</span>
+                </button>
+
+                <button onclick="closeConfirmModal()" class="w-full py-2.5 rounded-xl apple-btn-secondary text-xs font-bold text-gray-300 hover:text-white">
+                    <span id="confirm-no-btn">Volver e ingresar correo</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const robuxAmounts = [
+            50, 500, 1000, 1500, 2000, 2500, 
+            3000, 3500, 4000, 4500, 5000, 7500
+        ];
+
+        const translations = {
+            es: {
+                heroTitle: "<span class='bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent'>ROBLOX ELITE</span>",
+                heroDesc: "Selecciona la cantidad de Robux deseada y conéctate directamente vía WhatsApp para consultar el precio exacto y detalles.",
+                cardBadge: "NIVEL OFICIAL",
+                btnSelect: "Seleccionar",
+                footerText: "&copy; 2026 ROBLOX ELITE. Todos los derechos reservados. No afiliado a Roblox Corporation.",
+                mobStore: "Tienda",
+                mobContact: "Contacto",
+                modalTag: "PAQUETE SELECCIONADO",
+                modalEmailLabel: "Correo Electrónico (Para recibir tu código):",
+                modalEmailWarning: "Por favor no te equivoques al escribir tu correo. Allí se enviará el código de tu Robux.",
+                modalBtnContinue: "Continuar con Email",
+                modalBtnSkip: "Omitir Email",
+                emailPlaceholder: "ejemplo@correo.com",
+                emailErrorInvalid: "Por favor ingresa un correo electrónico válido.",
+                confirmTitle: "¿Estás seguro?",
+                confirmDesc: "Si omites ingresar tu correo, la respuesta del comerciante podría ser más lenta para procesar y verificar tu pedido.",
+                confirmYesBtn: "Sí, continuar sin email",
+                confirmNoBtn: "Volver e ingresar correo",
+                searchPlaceholder: "Buscar Robux...",
+                catAll: "Todos",
+                catStarter: "Inicio (50-1000)",
+                catPro: "Popular (1500-3000)",
+                catElite: "Elite (3500+)",
+                whatsappMsgWithEmail: "¡Hola! Quisiera consultar el precio exacto y detalles para comprar [AMOUNT] Robux. Mi correo electrónico es: [EMAIL]",
+                whatsappMsgNoEmail: "¡Hola! Quisiera consultar el precio exacto y detalles para comprar [AMOUNT] Robux. (No ingresé correo electrónico)"
+            },
+            en: {
+                heroTitle: "<span class='bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent'>ROBLOX ELITE</span>",
+                heroDesc: "Select your desired Robux amount and connect directly via WhatsApp to inquire about exact rates and details.",
+                cardBadge: "OFFICIAL TIER",
+                btnSelect: "Select Tier",
+                footerText: "&copy; 2026 ROBLOX ELITE. All Rights Reserved. Not affiliated with Roblox Corporation.",
+                mobStore: "Store",
+                mobContact: "Support",
+                modalTag: "SELECTED PACKAGE",
+                modalEmailLabel: "Email Address (To receive your code):",
+                modalEmailWarning: "Please double check your email address. Your Robux activation code will be delivered there.",
+                modalBtnContinue: "Continue with Email",
+                modalBtnSkip: "Skip Email",
+                emailPlaceholder: "example@mail.com",
+                emailErrorInvalid: "Please enter a valid email address.",
+                confirmTitle: "Are you sure?",
+                confirmDesc: "If you skip entering your email, the seller's response might be slower to verify your transaction.",
+                confirmYesBtn: "Yes, proceed without email",
+                confirmNoBtn: "Go back and enter email",
+                searchPlaceholder: "Search Robux...",
+                catAll: "All",
+                catStarter: "Starter (50-1000)",
+                catPro: "Popular (1500-3000)",
+                catElite: "Elite (3500+)",
+                whatsappMsgWithEmail: "Hello! I would like to inquire about the exact price and details for [AMOUNT] Robux. My email is: [EMAIL]",
+                whatsappMsgNoEmail: "Hello! I would like to inquire about the exact price and details for [AMOUNT] Robux. (No email provided)"
+            },
+            zh: {
+                heroTitle: "<span class='bg-gradient-to-r from-white via-gray-300 to-gray-500 bg-clip-text text-transparent'>ROBLOX ELITE</span>",
+                heroDesc: "請選擇您所需 Robux 額度，即可透過專屬 WhatsApp 通道與專員即時確認金額與詳細流程。",
+                cardBadge: "官方選單",
+                btnSelect: "選擇數量",
+                footerText: "&copy; 2026 ROBLOX ELITE. 保留所有權利。本網站非 Roblox Corporation 官方附屬機構。",
+                mobStore: "商店",
+                mobContact: "客服",
+                modalTag: "已選擇方案",
+                modalEmailLabel: "電子郵件（用於接收序號）：",
+                modalEmailWarning: "請務必確認電子郵件輸入正確，序號將直接傳送到此信箱。",
+                modalBtnContinue: "使用電子郵件繼續",
+                modalBtnSkip: "跳過電子郵件",
+                emailPlaceholder: "example@email.com",
+                emailErrorInvalid: "請輸入有效的電子郵件地址。",
+                confirmTitle: "確定嗎？",
+                confirmDesc: "如果您不輸入電子郵件，商家的回覆與核對速度可能會較慢。",
+                confirmYesBtn: "確定，不使用電子郵件繼續",
+                confirmNoBtn: "返回並輸入電子郵件",
+                searchPlaceholder: "搜尋 Robux...",
+                catAll: "全部",
+                catStarter: "入門 (50-1000)",
+                catPro: "熱門 (1500-3000)",
+                catElite: "尊榮 (3500+)",
+                whatsappMsgWithEmail: "你好！我想詢問購買 [AMOUNT] Robux 的確切金額與詳細流程。我的電子郵件是：[EMAIL]",
+                whatsappMsgNoEmail: "你好！我想詢問購買 [AMOUNT] Robux 的確切金額與詳細流程。（未提供電子郵件）"
+            }
+        };
+
+        let currentLang = 'es';
+        let currentCategory = 'all';
+        let selectedRobuxAmount = 0;
+        let audioCtx = null;
+
+        function playSynthSound(freq = 520) {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                if (audioCtx.state === 'suspended') {
+                    audioCtx.resume();
+                }
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.12);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.12);
+            } catch (e) {}
+        }
+
+        function initParticles() {
+            const canvas = document.getElementById('bg-canvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resize);
+            resize();
+
+            for (let i = 0; i < 45; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 2 + 0.5,
+                    vx: (Math.random() - 0.5) * 0.35,
+                    vy: (Math.random() - 0.5) * 0.35,
+                    alpha: Math.random() * 0.4 + 0.1
+                });
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.x < 0) p.x = canvas.width;
+                    if (p.x > canvas.width) p.x = 0;
+                    if (p.y < 0) p.y = canvas.height;
+                    if (p.y > canvas.height) p.y = 0;
+
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(243, 244, 246, ${p.alpha})`;
+                    ctx.shadowBlur = 8;
+                    ctx.shadowColor = "#ffffff";
+                    ctx.fill();
+                });
+                requestAnimationFrame(animate);
+            }
+            animate();
+        }
+
+        function checkMobileDevice() {
+            const isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+            const mobileNav = document.getElementById('mobile-nav');
+            if (isMobile) {
+                document.body.classList.add('is-mobile');
+                mobileNav.classList.remove('hidden');
+                mobileNav.classList.add('flex');
+            } else {
+                document.body.classList.remove('is-mobile');
+                mobileNav.classList.add('hidden');
+                mobileNav.classList.remove('flex');
+            }
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            ['es', 'en', 'zh'].forEach(l => {
+                const btn = document.getElementById(`lang-${l}`);
+                if (l === lang) {
+                    btn.className = "px-3 py-1.5 rounded-lg text-xs font-extrabold transition-all bg-gray-200 text-black shadow-md";
+                } else {
+                    btn.className = "px-3 py-1.5 rounded-lg text-xs font-semibold transition-all text-gray-400 hover:text-white";
+                }
+            });
+
+            const t = translations[lang];
+            document.getElementById('main-hero-title').innerHTML = t.heroTitle;
+            document.getElementById('main-hero-desc').innerText = t.heroDesc;
+            document.getElementById('footer-text').innerHTML = t.footerText;
+            document.getElementById('mob-nav-store').innerText = t.mobStore;
+            document.getElementById('mob-nav-contact').innerText = t.mobContact;
+
+            document.getElementById('search-input').placeholder = t.searchPlaceholder;
+            document.getElementById('cat-all').innerText = t.catAll;
+            document.getElementById('cat-starter').innerText = t.catStarter;
+            document.getElementById('cat-pro').innerText = t.catPro;
+            document.getElementById('cat-elite').innerText = t.catElite;
+
+            document.getElementById('modal-tag').innerText = t.modalTag;
+            document.getElementById('modal-email-label').innerText = t.modalEmailLabel;
+            document.getElementById('modal-email-warning').innerText = t.modalEmailWarning;
+            document.getElementById('modal-email-input').placeholder = t.emailPlaceholder;
+            document.getElementById('modal-btn-txt').innerText = t.modalBtnContinue;
+            document.getElementById('modal-skip-txt').innerText = t.modalBtnSkip;
+
+            document.getElementById('confirm-title').innerText = t.confirmTitle;
+            document.getElementById('confirm-desc').innerText = t.confirmDesc;
+            document.getElementById('confirm-yes-btn').innerText = t.confirmYesBtn;
+            document.getElementById('confirm-no-btn').innerText = t.confirmNoBtn;
+
+            renderCards();
+            playSynthSound(620);
+        }
+
+        function setCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                btn.className = "cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap titanium-glass text-gray-300 hover:text-white";
+            });
+            document.getElementById(`cat-${cat}`).className = "cat-btn px-4 py-2 rounded-xl text-xs font-bold whitespace-nowrap bg-gray-200 text-black";
+            renderCards();
+            playSynthSound(490);
+        }
+
+        function filterCards() {
+            renderCards();
+        }
+
+        function renderCards() {
+            const grid = document.getElementById('robux-grid');
+            const searchVal = parseInt(document.getElementById('search-input').value, 10);
+            grid.innerHTML = '';
+
+            const filtered = robuxAmounts.filter(amount => {
+                if (!isNaN(searchVal) && !amount.toString().includes(searchVal.toString())) {
+                    return false;
+                }
+                if (currentCategory === 'starter') return amount >= 50 && amount <= 1000;
+                if (currentCategory === 'pro') return amount >= 1500 && amount <= 3000;
+                if (currentCategory === 'elite') return amount >= 3500;
+                return true;
+            });
+
+            filtered.forEach(amount => {
+                const card = document.createElement('div');
+                card.className = "titanium-glass-card rounded-2xl p-4 sm:p-5 flex flex-col justify-between items-center text-center relative group cursor-pointer overflow-hidden";
+                card.onclick = () => openModal(amount);
+
+                card.innerHTML = `
+                    <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gradient-to-tr from-gray-200/20 to-gray-500/10 border border-white/20 flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-gem text-gray-200 text-lg sm:text-xl"></i>
+                    </div>
+
+                    <div class="mb-3">
+                        <span class="text-[10px] text-gray-400 font-bold uppercase tracking-wider block">${translations[currentLang].cardBadge}</span>
+                        <h4 class="text-xl sm:text-2xl font-black text-white group-hover:text-gray-200 transition-colors">${amount.toLocaleString()}</h4>
+                        <p class="text-[10px] font-extrabold text-gray-400 tracking-widest">ROBUX</p>
+                    </div>
+
+                    <button class="w-full py-2 rounded-xl bg-white/10 hover:bg-gray-200 hover:text-black border border-white/15 text-xs font-extrabold text-white transition-all flex items-center justify-center gap-2">
+                        <span>${translations[currentLang].btnSelect}</span>
+                        <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </button>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function openModal(amount) {
+            selectedRobuxAmount = amount;
+            document.getElementById('modal-amount').innerText = `${amount.toLocaleString()} ROBUX`;
+            document.getElementById('modal-email-input').value = '';
+            document.getElementById('email-error-msg').classList.add('hidden');
+
+            const backdrop = document.getElementById('modal-backdrop');
+            const container = document.getElementById('modal-container');
+
+            backdrop.classList.remove('opacity-0', 'pointer-events-none');
+            container.classList.remove('scale-95');
+            container.classList.add('scale-100');
+            playSynthSound(750);
+        }
+
+        function closeModal() {
+            const backdrop = document.getElementById('modal-backdrop');
+            const container = document.getElementById('modal-container');
+
+            backdrop.classList.add('opacity-0', 'pointer-events-none');
+            container.classList.remove('scale-100');
+            container.classList.add('scale-95');
+            playSynthSound(380);
+        }
+
+        function openConfirmModal() {
+            const confirmBackdrop = document.getElementById('confirm-backdrop');
+            const confirmContainer = document.getElementById('confirm-container');
+
+            confirmBackdrop.classList.remove('opacity-0', 'pointer-events-none');
+            confirmContainer.classList.remove('scale-95');
+            confirmContainer.classList.add('scale-100');
+            playSynthSound(600);
+        }
+
+        function closeConfirmModal() {
+            const confirmBackdrop = document.getElementById('confirm-backdrop');
+            const confirmContainer = document.getElementById('confirm-container');
+
+            confirmBackdrop.classList.add('opacity-0', 'pointer-events-none');
+            confirmContainer.classList.remove('scale-100');
+            confirmContainer.classList.add('scale-95');
+            playSynthSound(380);
+        }
+
+        function validateEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function handleContinueWithEmail() {
+            const email = document.getElementById('modal-email-input').value.trim();
+            const errorMsg = document.getElementById('email-error-msg');
+
+            if (!email) {
+                openConfirmModal();
+                return;
+            }
+
+            if (!validateEmail(email)) {
+                errorMsg.innerText = translations[currentLang].emailErrorInvalid;
+                errorMsg.classList.remove('hidden');
+                playSynthSound(280);
+                return;
+            }
+
+            errorMsg.classList.add('hidden');
+            sendWhatsAppRedirect(email);
+        }
+
+        function confirmSkipAndRedirect() {
+            closeConfirmModal();
+            sendWhatsAppRedirect(null);
+        }
+
+        function sendWhatsAppRedirect(email) {
+            const t = translations[currentLang];
+            let message = "";
+
+            if (email) {
+                message = t.whatsappMsgWithEmail.replace('[AMOUNT]', selectedRobuxAmount).replace('[EMAIL]', email);
+            } else {
+                message = t.whatsappMsgNoEmail.replace('[AMOUNT]', selectedRobuxAmount);
+            }
+
+            const encoded = encodeURIComponent(message);
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            const phone = "584243731330";
+            
+            let url = `https://wa.me/${phone}?text=${encoded}`;
+            if (isMobile) {
+                url = `whatsapp://send?phone=${phone}&text=${encoded}`;
+            }
+
+            playSynthSound(880);
+            closeModal();
+            window.open(url, '_blank');
+        }
+
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        window.addEventListener('resize', checkMobileDevice);
+
+        window.onload = function() {
+            initParticles();
+            checkMobileDevice();
+            setLanguage('es');
+        };
+    </script>
+</body>
 </html>
